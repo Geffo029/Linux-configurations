@@ -11,14 +11,14 @@ zsh_prompt () {
 }
 
 bash_prompt () {
-	black_B='\[\e[1;30m\]'
-	green_B='\[\e[1;32m\]'
-	yellow_B='\[\e[1;33m\]'
-	blue_B='\[\e[1;34m\]'
-	purple_B='\[\e[1;35m\]'
-	cyan_B='\[\e[1;36m\]'
-	white_B='\[\e[1;37m\]'
-	normal='\[\e[m\]'
+	black_B="\[\e[1;30m\]"
+	green_B="\[\e[1;32m\]"
+	yellow_B="\[\e[1;33m\]"
+	blue_B="\[\e[1;34m\]"
+	purple_B="\[\e[1;35m\]"
+	cyan_B="\[\e[1;36m\]"
+	white_B="\[\e[1;37m\]"
+	normal="\[\e[m\]"
 	PS1=""
 	PS1=$PS1"$black_B[${blue_B}bash$black_B]"
 	PS1=$PS1"$black_B[$yellow_B\w$black_B]"

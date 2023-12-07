@@ -10,6 +10,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+SHELL=/usr/bin/zsh
 
 
 ############################################################

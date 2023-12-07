@@ -1,5 +1,3 @@
-#### ALIASES ###########################
-
 #alias sudo='sudo '
 
 alias ls='ls --color=auto'

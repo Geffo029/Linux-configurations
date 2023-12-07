@@ -5,4 +5,5 @@ if [ -d "$LOCAL_BIN" ]; then
 	PATH="$LOCAL_BIN:$PATH"
 fi
 
+# FIREFOX touchscreen gestures and pixel-perfect trackpad scrolling
 MOZ_USE_XINPUT2=1
