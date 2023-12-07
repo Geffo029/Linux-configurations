@@ -1,0 +1,8 @@
+#### VARIABLES #########################
+
+LOCAL_BIN=$HOME/.local/bin
+if [ -d "$LOCAL_BIN" ]; then
+	PATH="$LOCAL_BIN:$PATH"
+fi
+
+MOZ_USE_XINPUT2=1
