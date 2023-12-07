@@ -1,0 +1,56 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=false
+separator_block_width=20
+border_top=2
+border_left=0
+border_right=0
+border_bottom=0
+#border="#ffffff55"
+border="#69c924"
+
+[internet]
+#label=Internet: 
+command="$HOME/.config/i3blocks/internet"
+interval=3
+#border="#21ff3b"
+
+
+[volume]
+#label=🔊
+#label=Volume: 
+command="/home/stefano/.config/i3blocks/volume"
+interval=once
+signal=12
+#border="#cc241d"
+
+[brightness]
+#label=brightness: 
+command="$HOME/.config/i3blocks/brightness"
+interval=once
+signal=12
+#border="#d79921"
+
+[time]
+command=date '+%H:%M %d-%m-%Y'
+interval=1
+#border="#928374"
+#border="#DDDDDD"
+
+#[button]
+#full_text="█"
+#command=notify-send PREMUTO && i3-msg -q exec $HOME/.config/i3blocks/menu.sh
+#border_top=0
+
+# [click]
+# full_text=Click me!
+# #command=pavucontrol
+# command=i3-msg -q exec pavucontrol
+# color=#F79494
