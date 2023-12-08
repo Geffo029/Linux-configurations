@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=xrand
+Exec=$HOME/.config/autostart/xrandr_lum.sh
+StartupNotify=false
+Terminal=false

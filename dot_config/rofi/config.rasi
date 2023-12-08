@@ -1,0 +1,35 @@
+configuration {
+	modes: "run,drun";
+/*	combi-modes: "window,drun"; */
+	show-icons: true;
+/*	icon-theme: "breeze-icons"; */
+	icon-theme: "Adwaita";
+	font: "monospace 10.5"; 
+/*	font: "Hack 11"; */
+	fixed-num-lines: true;
+	location: 0;
+/*	yoffset: 28; */
+	
+
+	timeout {
+		action: "kb-cancel";
+		delay:  0;
+	}
+
+	filebrowser {
+		directories-first: true;
+		sorting-method:    "name";
+	}
+}
+
+
+@theme "my_theme.rasi"
+
+* {
+	bg: #101f2bea;  
+/*	bg: #FFFFFF; */
+}
+
+listview {
+	lines: 15;
+}
