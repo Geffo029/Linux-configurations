@@ -1,0 +1,9 @@
+[Unit]
+Description="Wallpapers slideshow service (run ~/Pictures/wallpapers/slideshow-script.sh)"
+
+[Service]
+Type=oneshot
+ExecStart=/home/stefano/Pictures/wallpapers/slideshow-script.sh
+
+[Install]
+WantedBy=graphical.target
