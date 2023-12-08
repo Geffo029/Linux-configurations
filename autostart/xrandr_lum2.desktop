@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=xrand
-#Exec=/home/stefano/.config/autostart/xrandr_lum.sh
-#Exec=sh -c "lum80"
-Exec=sh -c " xrandr --output eDP-1 --brightness 0.8 || xrandr --output eDP1 --brightness 0.8"
-StartupNotify=false
-Terminal=false

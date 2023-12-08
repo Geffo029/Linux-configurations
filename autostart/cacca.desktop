@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=laCacca
-Exec=$HOME/.config/autostart/cacca.sh
-#Exec=sh -c "notify-send AAAAAAA -a MA??"
-StartupNotify=false
-Terminal=false
