@@ -1,9 +1,6 @@
 [Unit]
-Description="Pacman cache cleaning service (run paccache -rk)"
+Description=Remove unused cached package files
 
 [Service]
 Type=oneshot
-ExecStart=paccache -rk1 && paccache -ruk0
-
-[Install]
-WantedBy=graphical.target
+ExecStart=/usr/local/bin/clear_pacman_cache.sh
