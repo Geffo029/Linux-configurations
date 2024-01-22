@@ -23,8 +23,6 @@ configuration {
 }
 
 
-@theme "my_theme.rasi"
-
 * {
 	bg: #101f2bea;  
 /*	bg: #FFFFFF; */
@@ -33,3 +31,8 @@ configuration {
 listview {
 	lines: 15;
 }
+
+//@theme "my_theme.rasi"
+@theme "my_arc_theme.rasi"
+
+
