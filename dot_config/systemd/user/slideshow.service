@@ -1,9 +1,9 @@
 [Unit]
-Description="Wallpapers slideshow service (run ~/Pictures/wallpapers/slideshow-script.sh)"
+Description="Wallpapers slideshow service (run ~/.config/i3/slideshow-script.sh)"
 
 [Service]
 Type=oneshot
-ExecStart=/home/stefano/Pictures/wallpapers/slideshow-script.sh
+ExecStart="/home/stefano/.config/i3/slideshow-script.sh"
 
 [Install]
 WantedBy=graphical.target
