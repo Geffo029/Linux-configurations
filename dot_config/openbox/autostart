@@ -1,0 +1,35 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+
+setxkbmap it &
+
+xinput --set-prop 11 186 1.500000, 0.000000, 0.000000, 0.000000, 1.500000, 0.000000, 0.000000, 0.000000, 1.000000 &
+
+dunst &
+picom &
+
+tint2 &
+#lxpanel &
+
+AUTOSTART_DIR=$HOME/.config/autostart
+for file in $AUTOSTART_DIR/*.sh
+do
+	. "$file"
+done
+

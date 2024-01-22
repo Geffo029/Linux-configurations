@@ -3,9 +3,8 @@
 set $Win Mod4
 set $Alt Mod1
 
-#set $Lock i3lock --image $(. $HOME/.config/i3/screenshot_lock.sh)
-set $Lock . $HOME/.config/i3/screenshot_lock.sh && i3lock --image /tmp/screenlock.png
-#set $Lock i3lock --image $(. $HOME/.config/i3/screenshot_lock.sh)
+set $Lock i3lock --image $(. $HOME/.config/i3/screenshot_lock.sh)
+#set $Lock . $HOME/.config/i3/screenshot_lock.sh && i3lock --image /tmp/screenlock.png
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -25,20 +24,21 @@ set $ws10 "10"
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id "dex --autostart --environment i3"
 
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id 'xss-lock --transfer-sleep-lock -- $Lock --nofork'
+
 exec --no-startup-id "setxkbmap it"
 
 #exec --no-startup-id xinput --set-prop 11 186 1.500000, 0.000000, 0.000000, 0.000000, 1.500000, 0.000000, 0.000000, 0.000000, 1.000000
 exec --no-startup-id xinput --set-prop 11 186 1.5, 0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 1.0
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id "xss-lock --transfer-sleep-lock -- $Lock --nofork"
-
 #Si può anche lanciare in altro modo https://wiki.archlinux.org/title/Desktop_notifications#Notification_servers
 exec --no-startup-id "dunst"
 exec --no-startup-id "picom"  
 
-exec --no-startup-id "sh $HOME/.config/autostart/run_all.sh"
+exec --no-startup-id "sh $HOME/.config/i3/autostart.sh"
+exec --no-startup-id "sh $HOME/Configurations/shellstuff/variables"
 
 bindsym XF86AudioRaiseVolume  exec --no-startup-id ". $HOME/.config/i3/volume.sh up       && $refresh_i3status"
 bindsym XF86AudioLowerVolume  exec --no-startup-id ". $HOME/.config/i3/volume.sh down     && $refresh_i3status"
@@ -79,8 +79,9 @@ bindsym $Alt+v split v
 bindsym $Alt+a focus parent
 bindsym $Alt+d focus child
 
-bindsym $Win+space exec --no-startup-id "rofi -modi drun,run -show drun"
-bindsym $Win+Tab exec --no-startup-id "rofi -show window"
+bindsym $Win+space exec --no-startup-id "env TERMINAL=alacritty rofi -modi drun,run -show drun"
+bindsym $Win+Tab   exec --no-startup-id "rofi -show window"
+bindsym $Win+s     exec --no-startup-id ". $HOME/.config/i3/settings.sh alacritty"
 
 bindsym $Win+Control+1 workspace number $ws1
 bindsym $Win+Control+2 workspace number $ws2
@@ -133,14 +134,11 @@ for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [title="Volume Control"] floating enable
-for_window [title="Volume Control"] move position 800 300
-#for_window [title="Volume Control"] floating_minimum_size 75 x 50
-#for_window [title="Volume Control"] floating_maximum_size 500 x 300
+for_window [title="Settings"] floating enable
 
 
-#font pango:monospace 10
-font monospace 10
+font pango:monospace 10
+#font monospace 10
 
 gaps outer 4
 gaps inner 8
@@ -205,7 +203,8 @@ bindsym $Alt+l mode "$mode_windows_layout"
 # Si potrebbe fare con ROFI
 set $mode_system System: (l) Lock | (o) Logout | (s) Suspend | (p) Poweroff | (r) Restart
 mode "$mode_system" {
-	bindsym l exec --no-startup-id $Lock, mode "default"
+	#bindsym l exec --no-startup-id $Lock, mode "default"
+	bindsym l exec --no-startup-id loginctl lock-session, mode "default"
 	bindsym o exec --no-startup-id i3-msg exit, mode "default"
 	bindsym s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym p exec --no-startup-id systemctl poweroff, mode "default"
@@ -227,14 +226,15 @@ bar {
 	#hidden_state hide
 	#modifier $Win
 
-	#font pango:SauceCodePro Nerd Font
-	font pango: monospace 10
+	font pango: monospace 10.5
 	strip_workspace_numbers yes
 	#separator_symbol "|"
 	workspace_buttons yes
 	#bindsym button1 exec "notify-send WWW"
-	#bindsym button5 nop
-	tray_padding 1
+	# four value syntax
+	# padding top[px] right[px] bottom[px] left[px]
+	padding -1 3 0 0
+	tray_padding 1 
 	colors {
 		statusline #ffffff
 		background #111111
